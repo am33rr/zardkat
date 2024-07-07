@@ -4,24 +4,6 @@ A [hardhat-circom](https://github.com/projectsophon/hardhat-circom) template to 
 
 ## Quick Start
 Compile the Multiplier2() circuit and verify it against a smart contract verifier
-
-```
-pragma circom 2.0.0;
-
-/*This circuit template checks that c is the multiplication of a and b.*/  
-
-template Multiplier2 () {  
-
-   // Declaration of signals.  
-   signal input a;  
-   signal input b;  
-   signal output c;  
-
-   // Constraints.  
-   c <== a * b;  
-}
-component main = Multiplier2();
-```
 ### Install
 `npm i`
 
@@ -103,3 +85,21 @@ npx hardhat newcircuit --name newcircuit
 **determinism**
 > When you recompile the same circuit using the groth16 protocol, even with no changes, this plugin will apply a new final beacon, changing all the zkey output files. This also causes your Verifier contracts to be updated.
 > For development builds of groth16 circuits, we provide the --deterministic flag in order to use a NON-RANDOM and UNSECURE hardcoded entropy (0x000000 by default) which will allow you to more easily inspect and catch changes in your circuits. You can adjust this default beacon by setting the beacon property on a circuit's config in your hardhat.config.js file.
+
+## Depolying to Amoy Testnet
+
+Run - `npx hardhat run scripts/deploy.ts --network amoy` to deploy it to amoy testnet
+
+### .env file
+
+Do make sure to create a .env file in the root directory and paste your private key as 
+`private_key=<private_key> `
+
+## Authors
+
+Ameer S
+[am33rrss@gmail.com]
+
+## License
+
+This project is licensed under the [GPL-3.0] License
